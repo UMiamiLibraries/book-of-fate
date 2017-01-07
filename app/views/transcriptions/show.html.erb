@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @transcription.question %>
+</p>
+
+<p>
+  <strong>Pattern:</strong>
+  <%= @transcription.pattern %>
+</p>
+
+<p>
+  <strong>Transcription:</strong>
+  <%= @transcription.transcription %>
+</p>
+
+<p>
+  <strong>Locked:</strong>
+  <%= @transcription.locked %>
+</p>
+
+<%= link_to 'Edit', edit_transcription_path(@transcription) %> |
+<%= link_to 'Back', transcriptions_path %>

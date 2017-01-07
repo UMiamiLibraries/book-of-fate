@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: one
+  pattern: one
+  transcription: MyString
+  locked: false
+
+two:
+  question: two
+  pattern: two
+  transcription: MyString
+  locked: false

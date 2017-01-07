@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pattern: MyString
+  page: MyString
+  side: MyString
+  offset: MyString
+
+two:
+  pattern: MyString
+  page: MyString
+  side: MyString
+  offset: MyString

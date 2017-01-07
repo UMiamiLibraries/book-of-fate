@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">Transcriptions</h1>
+
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @posts %>
+  </div>
+  <%= will_paginate @transcriptions, :container => false %>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+      <th>Question</th>
+      <th>Pattern</th>
+      <th>Transcription</th>
+      <th>Locked</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transcriptions.each do |transcription| %>
+      <tr>
+        <td><img src="<%= transcription.get_image_url %>" width="450" height="150"></td>
+        <td><%= transcription.question %></td>
+        <td><%= transcription.pattern %></td>
+        <td><%= transcription.transcription %></td>
+        <td><%= transcription.locked %></td>
+        <td><%= link_to 'Show', transcription %></td>
+        <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+

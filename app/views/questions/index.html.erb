@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">Questions</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Question</th>
+      <th>Locked</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.number %></td>
+        <td style="font-size:17px; line-height:2;"><%= question.question %></td>
+        <td><%= question.locked %></td>
+        <td><%= link_to 'Show', question %></td>
+        <td><button class="question-freeze btn btn-primary" style="width:85px;"> Unfreeze </button><td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
