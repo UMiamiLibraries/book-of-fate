@@ -1,0 +1,2 @@
+class GeomancerController < ApplicationController
+end
