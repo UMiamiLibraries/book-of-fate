@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tags
   root               to: 'geomancer#index'
 
   constraints(question_id: /[0-9]+/) do
