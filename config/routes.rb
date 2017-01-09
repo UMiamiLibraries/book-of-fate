@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :tags
+  get 'pages/tag_pages'
+
   root               to: 'geomancer#index'
   constraints(question_id: /[0-9]+/) do
      get '/:question_id/',   to: 'geomancer#question'
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
         get 'select'
       end
     end
+      resources :tags
       resources :users
   end
   
