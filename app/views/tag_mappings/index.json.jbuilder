@@ -1,0 +1,1 @@
+json.array! @tag_mappings, partial: 'tag_mappings/tag_mapping', as: :tag_mapping

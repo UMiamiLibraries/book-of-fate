@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tag_mappings
   get 'pages/tag_pages'
 
   root               to: 'geomancer#index'
@@ -28,6 +29,9 @@ Rails.application.routes.draw do
       resources :users
   end
   
+  scope '/about' do
+      get '/:slug',   to: 'pages#tag_pages'
+  end
   
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

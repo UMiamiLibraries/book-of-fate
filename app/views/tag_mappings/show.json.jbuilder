@@ -1,0 +1,1 @@
+json.partial! "tag_mappings/tag_mapping", tag_mapping: @tag_mapping
