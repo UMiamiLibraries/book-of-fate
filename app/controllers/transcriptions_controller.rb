@@ -1,6 +1,7 @@
-class TranscriptionsController < ApplicationController
+class TranscriptionsController < AdminController
+  before_action :logged_in_user
   before_action :set_transcription, only: [:show, :edit, :update]
-  layout "admin"
+
   # GET /transcriptions
   def index
     @transcriptions = Transcription.paginate(page: params[:page])

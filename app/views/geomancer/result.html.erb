@@ -1,0 +1,88 @@
+<% content_for :twitter do %>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@BookOfFate">
+    <meta name="twitter:creator" content="@AskRichter">
+    <meta name="twitter:title" content="Look at my fortune">
+    <meta name="twitter:description" content="<%= @transcription.question.question %> - <%= @transcription.transcription %>">
+    <meta name="twitter:image" content="<%= @transcription.get_image_url %>">
+<% end %>
+
+<% content_for :question do %>
+    <select id="question" onchange="window.location.href=this.value;">
+        <option value="/">Select Thy Ponderation</option>
+        <% for question in @questions %>
+            <% if question == @transcription.question %>
+                <option value="/<%= question.id %>/" selected><%= question.question %></option>
+            <% else %>
+                <option value="/<%= question.id %>/"><%= question.question %></option>
+            <% end %>
+        <% end %>
+    </select>
+<% end %>
+
+<% content_for :geomancer do %>
+    <img id="geo-background" src="https://s3.amazonaws.com/book-of-fate/images/geomancer.png">
+    <img id="die1" src="https://s3.amazonaws.com/book-of-fate/images/die<%= @rolls[12]%>.png" class="face">
+    <img id="die2" src="https://s3.amazonaws.com/book-of-fate/images/die<%= @rolls[13]%>.png" class="face">
+    <img id="die3" src="https://s3.amazonaws.com/book-of-fate/images/die<%= @rolls[14]%>.png" class="face">
+    <img id="die4" src="https://s3.amazonaws.com/book-of-fate/images/die<%= @rolls[15]%>.png" class="face">
+    <button id="roll" disabled="true">roll</button>
+    <p id="rolls-left"><small>rolls left: <span id="times">0</span></small></p>
+<% end %>
+
+<% content_for :results do %>
+    <% for i in 0...@rolls.length do %>
+        <% if i % 4 == 0 then %><div class="roll-result"><% end %>
+        <img src="https://s3.amazonaws.com/book-of-fate/images/die<%= @rolls[i] %>.png">
+        <% if i % 4 == 3 then %></div><% end %>
+    <% end %>
+<% end %>
+
+<% content_for :pattern do %>
+    <% for i in 0...@pattern.pattern.length do %>
+        <% if i % 4 == 0 then %><div class="sub-pattern"> <% end %>
+        <div class="row">
+            <div class="circle"></div>    
+            <% if @pattern.pattern[i] == '2' then %><div class="circle"></div><% end %>
+        </div>
+        <% if i % 4 == 3 then %></div><% end %>
+    <% end %>
+<% end %>
+
+<% content_for :fortune do %>
+    <img src="<%= @transcription.get_image_url %>"> <!-- 200x500-->
+<% end %>
+
+<% content_for :transcription do %>
+    <% if false %>
+        <p>Transcription: <%= @transcription.transcription %></p>
+    <% else %>
+
+        <%= form_for @submission, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+            <div class="row">
+                <div class="col-xs-2 text-center"></div>
+                <div class="col-xs-8 text-center">
+                    <div class="form-group">
+                        <% if @transcription.transcription == nil %>
+                            <%= f.text_area :submission, size: "50x10", placeholder: "Please provide a transcription" %>
+                        <% else %>
+                            <%= f.text_area :submission, size: "50x10", placeholder: @transcription.transcription %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="col-xs-2 text-center"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5 text-center"></div>
+                <div class="col-xs-2 text-center">
+                    <%= f.submit "Submit", id: "submit_transcription", class: "btn btn-primary" %>
+                </div>
+                <div class="col-xs-5 text-center"></div>
+            </div>
+        <% end %>
+        <!--  
+            <a href="https://twitter.com/intent/tweet?button_hashtag=BookOfFate" class="twitter-hashtag-button" data-size="large" data-text="I just got my fortune! <%= %>" data-show-count="false">Tweet</a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        -->
+    <% end %>
+<% end %>

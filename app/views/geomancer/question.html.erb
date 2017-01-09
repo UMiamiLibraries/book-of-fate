@@ -1,0 +1,25 @@
+<% content_for :question do %>  
+    <select id="question" onchange="window.location.href=this.value;">
+        <option value="/">Select Thy Ponderation</option>
+        <% for question in @questions %>
+            <% if question.id == @question.id %>
+                <option value="/<%= question.id %>/" selected><%= question.question %></option>
+            <% else %>
+                <option value="/<%= question.id %>/"><%= question.question %></option>
+            <% end %>
+        <% end %>
+    </select>
+<% end %>
+
+<% content_for :geomancer do %>
+    <img id="geo-background" src="https://s3.amazonaws.com/book-of-fate/images/geomancer.png">
+    <img id="die1" src="https://s3.amazonaws.com/book-of-fate/images/die1.png" class="face">
+    <img id="die2" src="https://s3.amazonaws.com/book-of-fate/images/die2.png" class="face">
+    <img id="die3" src="https://s3.amazonaws.com/book-of-fate/images/die3.png" class="face">
+    <img id="die4" src="https://s3.amazonaws.com/book-of-fate/images/die4.png" class="face">
+    <button id="roll">roll</button>
+    <p id="rolls-left">
+        <small>rolls left: <span id="times">4</span></small>
+        <small><a id="skip">Skip animation</a></small>
+    </p>
+<% end %>

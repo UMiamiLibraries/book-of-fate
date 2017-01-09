@@ -3,7 +3,7 @@
   <head>
     <title>Book of Fate</title>
     <%= csrf_meta_tags %>
-
+	<%= javascript_include_tag "application" %>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -36,9 +36,8 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> test1</a></li>
               <li>
-                <a href="/logout/">
-                  <span class="glyphicon glyphicon-log-out"></span> Logout
-                </a>
+                  <%= link_to raw("<span class='glyphicon glyphicon-log-out'></span> Logout"), logout_path, method: "delete" %>
+                   
               </li>
             </ul>
           </div>

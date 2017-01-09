@@ -1,7 +1,7 @@
-class SubmissionsController < ApplicationController
+class SubmissionsController < AdminController
+  before_action :logged_in_user
   before_action :set_submission, only: [:show, :edit, :update, :destroy, :select]
   # before_action :require_login
-  layout "admin"
 
   # GET /submissions
   def index
