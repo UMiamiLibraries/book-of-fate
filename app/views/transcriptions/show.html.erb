@@ -1,24 +1,29 @@
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @transcription.question %>
-</p>
+<p class="text-center"><%= @transcription.question.question %> - <%= @transcription.pattern.pattern %></p>
 
-<p>
-  <strong>Pattern:</strong>
-  <%= @transcription.pattern %>
-</p>
+<img src="<%= @transcription.get_image_url %>" height="200" width="600" style="display: block;margin: 0 auto;">
 
-<p>
-  <strong>Transcription:</strong>
-  <%= @transcription.transcription %>
-</p>
+<br>
+<p class="text-center"><%= @transcription.transcription %></p>
+<br>
 
 <p>
   <strong>Locked:</strong>
   <%= @transcription.locked %>
 </p>
+<br/>
+
+
+<table class="table table-striped">
+	<tbody>
+		<%= render @transcription.submissions%>
+	</tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_transcription_path(@transcription) %> |
 <%= link_to 'Back', transcriptions_path %>

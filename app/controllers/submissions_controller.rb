@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: [:show, :edit, :update, :destroy, :select]
+  # before_action :require_login
   layout "admin"
 
   # GET /submissions
@@ -44,6 +45,20 @@ class SubmissionsController < ApplicationController
   def destroy
     @submission.destroy
     redirect_to submissions_url, notice: 'Submission was successfully destroyed.'
+  end
+  
+  # GET /submissions/1/select
+  def select
+    transcription = @submission.transcription
+    if transcription.update(transcription: @submission.submission)
+      
+      
+      flash[:notice] = "Submission was successfully updated."
+ 
+      redirect_to transcription_path(transcription), notice: 'Submission was successfully updated.'
+    else
+      redirect_to transcription_path(transcription)
+    end
   end
 
   private

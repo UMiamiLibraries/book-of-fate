@@ -1,0 +1,13 @@
+<tr>
+  <td style="width: 150px"><img src="<%= transcription.get_image_url %>" width="450" height="150"></td>
+  <!-- <td><% transcription.question %></td>
+  <td><% transcription.pattern %></td> -->
+  <td><p>Transcription: <%= transcription.transcription %></p>
+  	<table>
+  		<tbody>
+  			<%= render transcription.submissions %>
+  		</tbody>
+  	</table>
+  </td>
+  <td><%= transcription.locked %></td>
+</tr>

@@ -21,17 +21,7 @@
   </thead>
 
   <tbody>
-    <% @transcriptions.each do |transcription| %>
-      <tr>
-        <td><img src="<%= transcription.get_image_url %>" width="450" height="150"></td>
-        <td><%= transcription.question %></td>
-        <td><%= transcription.pattern %></td>
-        <td><%= transcription.transcription %></td>
-        <td><%= transcription.locked %></td>
-        <td><%= link_to 'Show', transcription %></td>
-        <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
-      </tr>
-    <% end %>
+    <%= render @transcriptions %>
   </tbody>
 </table>
 

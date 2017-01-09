@@ -15,4 +15,16 @@
   <%= @question.locked %>
 </p>
 
+<table class="table table-striped">
+  <thead>
+	<th>Image</th>
+	<th>Transcription</th>
+	<th>Locked</th>
+  </thead>
+
+  <tbody>
+    <%= render @question.transcriptions %>
+  </tbody>
+</table>
+
 <%= link_to 'Back', questions_path %>
