@@ -3,7 +3,9 @@
 one:
   tag: MyString
   discription: MyText
+  transcription: one
 
 two:
   tag: MyString
   discription: MyText
+  transcription: two

@@ -2,13 +2,11 @@ Rails.application.routes.draw do
 
   resources :tags
   root               to: 'geomancer#index'
-
   constraints(question_id: /[0-9]+/) do
      get '/:question_id/',   to: 'geomancer#question'
      constraints(rolls: /[1-4]{16}/) do
      get '/:question_id/:rolls',  to: 'geomancer#result'
      post '/:question_id/:rolls', to: 'geomancer#create'
-
     end
   end
 
@@ -25,7 +23,7 @@ Rails.application.routes.draw do
         get 'select'
       end
     end
-    resources :users
+      resources :users
   end
   
   
