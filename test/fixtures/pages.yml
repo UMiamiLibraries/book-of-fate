@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  transcription: one
-  tag: one
+  title: MyString
+  description: MyText
 
 two:
-  transcription: two
-  tag: two
+  title: MyString
+  description: MyText

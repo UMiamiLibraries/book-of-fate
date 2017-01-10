@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :tag_mappings
-  get 'pages/tag_pages'
-
+  resources :resources
+  resources :tags
+  resources :pages
   root               to: 'geomancer#index'
   constraints(question_id: /[0-9]+/) do
      get '/:question_id/',   to: 'geomancer#question'
@@ -17,16 +17,16 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   scope '/admin' do
+      resources :patterns, only: [:index, :show]
     resources :questions, only: [:index, :show]
-    resources :patterns, only: [:index, :show]
-    resources :transcriptions, only: [:edit, :index, :show, :update]
+      resources :transcriptions, only: [:edit, :index, :show, :update]
     resources :submissions do
       member do
         get 'select'
       end
     end
-      resources :tags
-      resources :users
+    resources :users
+
   end
   
   scope '/about' do

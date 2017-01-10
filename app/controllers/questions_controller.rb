@@ -1,5 +1,4 @@
 class QuestionsController < AdminController
-  before_action :logged_in_user
 
   # GET /questions
   def index

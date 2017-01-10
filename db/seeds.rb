@@ -182,3 +182,5 @@ Question.all.each do |question|
 		Transcription.create(question: question, pattern: pattern)
 	end
 end
+
+User.create(email: "test@test.com", name: "test", password: "test", password_confirmation: "test")

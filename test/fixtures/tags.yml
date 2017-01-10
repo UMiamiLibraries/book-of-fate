@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  tag: MyString
-  discription: MyText
   transcription: one
+  tag: one
 
 two:
-  tag: MyString
-  discription: MyText
   transcription: two
+  tag: two

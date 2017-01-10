@@ -1,5 +1,4 @@
 class PatternsController < AdminController
-  before_action :logged_in_user
 
   # GET /patterns
   def index

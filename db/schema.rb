@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109213229) do
+ActiveRecord::Schema.define(version: 20170110081044) do
+
+  create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "patterns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "pattern"
@@ -38,11 +45,11 @@ ActiveRecord::Schema.define(version: 20170109213229) do
   end
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "tag"
-    t.text     "discription",      limit: 65535
     t.integer  "transcription_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "page_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["page_id"], name: "index_tags_on_page_id", using: :btree
     t.index ["transcription_id"], name: "index_tags_on_transcription_id", using: :btree
   end
 
@@ -66,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170109213229) do
   end
 
   add_foreign_key "submissions", "transcriptions"
+  add_foreign_key "tags", "pages"
   add_foreign_key "tags", "transcriptions"
   add_foreign_key "transcriptions", "patterns"
   add_foreign_key "transcriptions", "questions"

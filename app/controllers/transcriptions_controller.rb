@@ -1,5 +1,4 @@
 class TranscriptionsController < AdminController
-  before_action :logged_in_user
   before_action :set_transcription, only: [:show, :edit, :update]
 
   # GET /transcriptions
