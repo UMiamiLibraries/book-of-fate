@@ -17,7 +17,7 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create resource" do
     assert_difference('Resource.count') do
-      post resources_url, params: { resource: { author: @resource.author, link: @resource.link, title: @resource.title } }
+      post resources_url, params: { resource: { author: @resource.author, link: @resource.link, page_id: @resource.page_id, title: @resource.title } }
     end
 
     assert_redirected_to resource_url(Resource.last)
@@ -34,7 +34,7 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update resource" do
-    patch resource_url(@resource), params: { resource: { author: @resource.author, link: @resource.link, title: @resource.title } }
+    patch resource_url(@resource), params: { resource: { author: @resource.author, link: @resource.link, page_id: @resource.page_id, title: @resource.title } }
     assert_redirected_to resource_url(@resource)
   end
 

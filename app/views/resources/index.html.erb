@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Page</th>
       <th>Title</th>
       <th>Author</th>
       <th>Link</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @resources.each do |resource| %>
       <tr>
+        <td><%= resource.page %></td>
         <td><%= resource.title %></td>
         <td><%= resource.author %></td>
         <td><%= resource.link %></td>
