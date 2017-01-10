@@ -2,6 +2,7 @@ class Transcription < ApplicationRecord
   belongs_to :question
   belongs_to :pattern
   has_many :submissions
+  has_many :tags
 
   self.per_page = 16
 
