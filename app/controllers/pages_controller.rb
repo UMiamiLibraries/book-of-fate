@@ -2,13 +2,11 @@ class PagesController < AdminController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   # GET /pages
-  # GET /pages.json
   def index
     @pages = Page.all
   end
 
   # GET /pages/1
-  # GET /pages/1.json
   def show
   end
 
@@ -22,43 +20,28 @@ class PagesController < AdminController
   end
 
   # POST /pages
-  # POST /pages.json
   def create
     @page = Page.new(page_params)
-
-    respond_to do |format|
-      if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
-        format.json { render :show, status: :created, location: @page }
-      else
-        format.html { render :new }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    if @page.save
+      redirect_to @page, notice: 'Page was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /pages/1
-  # PATCH/PUT /pages/1.json
   def update
-    respond_to do |format|
-      if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
-        format.json { render :show, status: :ok, location: @page }
-      else
-        format.html { render :edit }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    if @page.update(page_params)
+      redirect_to @page, notice: 'Page was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /pages/1
-  # DELETE /pages/1.json
   def destroy
     @page.destroy
-    respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to pages_url, notice: 'Page was successfully destroyed.'
   end
 
   private

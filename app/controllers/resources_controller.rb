@@ -2,13 +2,11 @@ class ResourcesController < ApplicationController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   # GET /resources
-  # GET /resources.json
   def index
     @resources = Resource.all
   end
 
   # GET /resources/1
-  # GET /resources/1.json
   def show
   end
 
@@ -22,43 +20,28 @@ class ResourcesController < ApplicationController
   end
 
   # POST /resources
-  # POST /resources.json
   def create
     @resource = Resource.new(resource_params)
-
-    respond_to do |format|
-      if @resource.save
-        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
-        format.json { render :show, status: :created, location: @resource }
-      else
-        format.html { render :new }
-        format.json { render json: @resource.errors, status: :unprocessable_entity }
-      end
+    if @resource.save
+      redirect_to @resource, notice: 'Resource was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /resources/1
-  # PATCH/PUT /resources/1.json
   def update
-    respond_to do |format|
-      if @resource.update(resource_params)
-        format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }
-        format.json { render :show, status: :ok, location: @resource }
-      else
-        format.html { render :edit }
-        format.json { render json: @resource.errors, status: :unprocessable_entity }
-      end
-    end
+    if @resource.update(resource_params)
+      redirect_to @resource, notice: 'Resource was successfully updated.'
+    else
+      render :edit
+    end    
   end
 
   # DELETE /resources/1
-  # DELETE /resources/1.json
   def destroy
     @resource.destroy
-    respond_to do |format|
-      format.html { redirect_to resources_url, notice: 'Resource was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to resources_url, notice: 'Resource was successfully destroyed.'
   end
 
   private

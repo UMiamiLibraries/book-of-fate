@@ -1,6 +1,5 @@
 class SubmissionsController < AdminController
   before_action :set_submission, only: [:show, :edit, :update, :destroy, :select]
-  # before_action :require_login
 
   # GET /submissions
   def index
@@ -23,7 +22,6 @@ class SubmissionsController < AdminController
   # POST /submissions
   def create
     @submission = Submission.new(submission_params)
-
     if @submission.save
       redirect_to @submission, notice: 'Submission was successfully created.'
     else
@@ -50,10 +48,7 @@ class SubmissionsController < AdminController
   def select
     transcription = @submission.transcription
     if transcription.update(transcription: @submission.submission)
-      
-      
       flash[:notice] = "Submission was successfully updated."
- 
       redirect_to transcription_path(transcription), notice: 'Submission was successfully updated.'
     else
       redirect_to transcription_path(transcription)

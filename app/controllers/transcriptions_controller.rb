@@ -4,7 +4,6 @@ class TranscriptionsController < AdminController
   # GET /transcriptions
   def index
     @transcriptions = Transcription.paginate(page: params[:page])
-
   end
 
   # GET /transcriptions/1
@@ -24,7 +23,6 @@ class TranscriptionsController < AdminController
     end
   end
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_transcription
@@ -33,6 +31,6 @@ class TranscriptionsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transcription_params
-      params.require(:transcription).permit(:question_id, :pattern_id, :transcription, :locked)
+      params.require(:transcription).permit(:transcription, :locked)
     end
 end
