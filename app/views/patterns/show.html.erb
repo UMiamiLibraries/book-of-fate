@@ -20,4 +20,16 @@
   <%= @pattern.offset %>
 </p>
 
+<table class="table table-striped">
+  <thead>
+	<th>Image</th>
+	<th>Transcription</th>
+	<th>Locked</th>
+  </thead>
+
+  <tbody>
+    <%= render @pattern.transcriptions %>
+  </tbody>
+</table>
+
 <%= link_to 'Back', patterns_path %>

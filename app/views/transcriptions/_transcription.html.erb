@@ -1,13 +1,14 @@
 <tr>
   <td style="width: 150px"><img src="<%= transcription.get_image_url %>" width="450" height="150"></td>
-  <!-- <td><% transcription.question %></td>
-  <td><% transcription.pattern %></td> -->
-  <td><p>Transcription: <%= transcription.transcription %></p>
-  	<table>
-  		<tbody>
-  			<%= render transcription.submissions %>
-  		</tbody>
+  <td>
+  	<p>Transcription: <%= transcription.transcription %></p>
+  	<table class="table table-striped" style="display: block;height: 120px;overflow-y: scroll;">
+  	    <%= render transcription.submissions %>
   	</table>
   </td>
-  <td><%= transcription.locked %></td>
+  <td>
+  	<%= button_to transcription.locked, '.', class: "btn btn-primary", style: "width:85px" %>
+  	<%= button_to 'Show', transcription, class: "btn btn-primary", method: :get, style: "width:85px" %>
+  	<%= button_to 'Edit', edit_transcription_path(transcription), class: "btn btn-primary", style: "width:85px" %>
+  </td>
 </tr>

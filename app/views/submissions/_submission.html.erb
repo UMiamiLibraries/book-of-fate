@@ -1,11 +1,11 @@
 <tr>
-	<td><%= submission.submission %></td>
+	<td style="width:100%;"><%= submission.submission %></td>
 	<td>
-		<%= button_to 'Select', select_submission_path(submission), method: :get, data: { confirm: 'Are you sure?' }, 
-			class: "btn btn-xs btn-success transcription-select" %>
+		<%= link_to 'Select', select_submission_path(submission), method: :get, data: { confirm: 'Are you sure?' }, 
+			class: "btn btn-xs btn-success transcription-select", style: "display:inline-block" %>
 	</td>
 	<td>
-		<%= button_to 'Delete', submission_path(submission), method: :delete, data: { confirm: 'Are you sure?' },
-			class: "btn btn-xs btn-danger transcription-delete" %>
+		<%= link_to 'Delete', submission_path(submission), method: :delete, data: { confirm: 'Are you sure?' },
+			class: "btn btn-xs btn-danger transcription-delete", style: "display:inline-block" %>
 	</td>
 </tr>

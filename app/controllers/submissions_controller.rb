@@ -1,41 +1,9 @@
 class SubmissionsController < AdminController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy, :select]
+  before_action :set_submission, only: [:destroy, :select]
 
   # GET /submissions
   def index
-    @submissions = Submission.all
-  end
-
-  # GET /submissions/1
-  def show
-  end
-
-  # GET /submissions/new
-  def new
-    @submission = Submission.new
-  end
-
-  # GET /submissions/1/edit
-  def edit
-  end
-
-  # POST /submissions
-  def create
-    @submission = Submission.new(submission_params)
-    if @submission.save
-      redirect_to @submission, notice: 'Submission was successfully created.'
-    else
-      render :new
-    end
-  end
-
-  # PATCH/PUT /submissions/1
-  def update
-    if @submission.update(submission_params)
-      redirect_to @submission, notice: 'Submission was successfully updated.'
-    else
-      render :edit
-    end
+    @submissions = Submission.paginate(page: params[:page])
   end
 
   # DELETE /submissions/1

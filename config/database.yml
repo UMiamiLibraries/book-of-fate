@@ -6,12 +6,17 @@
 #
 default: &default
   adapter: mysql2
-  host: localhost
-  port: 3306
-  username: root
-  password: MyNewPass
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
+#  host: localhost
+#  port: 3306
+#  username: root
+#  password: MyNewPass
   pool: 5
   timeout: 5000
+
 
 development:
   <<: *default
