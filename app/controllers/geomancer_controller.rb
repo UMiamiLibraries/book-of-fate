@@ -15,8 +15,8 @@ class GeomancerController < ApplicationController
     end
 
     def create
-        pattern = Pattern.find_by(pattern: parseRolls)
-        @transcription = Transcription.find_by(question: @question, pattern: pattern)
+        @pattern = Pattern.find_by(pattern: parseRolls)
+        @transcription = Transcription.find_by(question: @question, pattern: @pattern)
         @submission = Submission.new(submission_params)
         @submission.transcription = @transcription
         if @submission.save!
