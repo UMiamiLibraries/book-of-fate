@@ -2,7 +2,7 @@
     <select id="question" onchange="window.location.href=this.value;">
         <option value="/">Select Thy Ponderation</option>
         <% for question in @questions %>
-            <% if question.id == @question.id %>
+            <% if question == @question %>
                 <option value="/<%= question.id %>/" selected><%= question.question %></option>
             <% else %>
                 <option value="/<%= question.id %>/"><%= question.question %></option>
