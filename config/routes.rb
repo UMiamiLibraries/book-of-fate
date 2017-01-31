@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end
   
   scope '/about' do
-    get '/',      to: 'static#about'
     get '/:slug', to: 'static#pages'
   end
 
@@ -30,6 +29,7 @@ Rails.application.routes.draw do
 
   end
 
+  get 'about',      to: 'static#about'
   get 'contact',    to: 'static#contact'
 
   get    '/login',  to: 'sessions#new'
