@@ -34,7 +34,7 @@ class GeomancerController < ApplicationController
       # Use callbacks to share common setup or constraints between actions.
       def set_questions
         @questions = Question.all
-        @question = Question.find_by(params[:question_id])
+        @question = Question.find_by(number: params[:question_id])
       end
       
       def parseRolls
