@@ -1,4 +1,6 @@
 class StaticController < ApplicationController
+  layout "public"
+
   def contact
   end
 

@@ -39,7 +39,7 @@
 <% end %>
 
 <% content_for :pattern do %>
-    <% for i in 0...@pattern.pattern.length do %>
+    <% for i in 0...12 do %>
         <% if i % 4 == 0 then %><div class="sub-pattern"> <% end %>
         <div class="row">
             <div class="circle"></div>    
@@ -57,7 +57,7 @@
     <% if false %>
         <p>Transcription: <%= @transcription.transcription %></p>
     <% else %>
-
+        <p><%= @pattern.pattern %></p>
         <%= form_for @submission, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
             <div class="row">
                 <div class="col-xs-2 text-center"></div>

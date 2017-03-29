@@ -9,6 +9,7 @@ class GeomancerController < ApplicationController
     end
 
     def result
+        puts parseRolls
         @pattern = Pattern.find_by(pattern: parseRolls)
         @transcription = Transcription.find_by(question: @question, pattern: @pattern)
         @submission = Submission.new
@@ -39,14 +40,32 @@ class GeomancerController < ApplicationController
       
       def parseRolls
         @rolls = params[:rolls]
-        cols = rows = result = Array.new(4, 0)
+        cols = Array.new(4, 0)
+        rows = Array.new(4, 0)
+        result = Array.new(4, 0)
 
         for i in 0..3 do
-            (@rolls[i].to_i + @rolls[i + 4].to_i + @rolls[i + 8].to_i + @rolls[i + 12].to_i) % 2 == 0 ? cols[i] = 2 : cols[i] = 1   
-            (@rolls[i * 4].to_i + @rolls[i * 4 + 1].to_i + @rolls[i * 4 + 2].to_i + @rolls[i * 4 + 3].to_i) % 2 == 0 ? rows[i] = 2 : rows[i] = 1
-            (cols[i] + rows[i]) % 2 == 0 ? result[i] = 2 : result[i] = 1
+            colnum = @rolls[i].to_i + @rolls[i + 4].to_i + @rolls[i + 8].to_i + @rolls[i + 12].to_i
+            if colnum % 2 == 0 then
+              cols[i] = 2
+            else
+              cols[i] = 1
+            end
+
+            rownum = @rolls[i * 4].to_i + @rolls[i * 4 + 1].to_i + @rolls[i * 4 + 2].to_i + @rolls[i * 4 + 3].to_i
+            if rownum % 2 == 0 then
+              rows[i] = 2
+            else
+              rows[i] = 1  
+            end
+
+            if (cols[i] + rows[i]) % 2 == 0 then
+              result[i] = 2
+            else
+              result[i] = 1
+            end
         end
-        cols.join("") + rows.join("") + result.join("")
+        return cols.join("") + rows.join("") + result.join("")
       end
 
 
