@@ -1,26 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Number:</strong>
-  <%= @question.number %>
-</p>
-
-<p>
-  <strong>Question:</strong>
+<h1 class="text-center">
   <%= @question.question %>
-</p>
-
-<p>
-  <strong>Locked:</strong>
-  <%= @question.locked %>
-</p>
+  <%= link_to @question.status(), lock_question_path(@question.id), class: "btn btn-primary", style: "width:85px"  %>
+</h1>
 
 <table class="table table-striped">
-  <thead>
+<!--   <thead>
 	<th>Image</th>
 	<th>Transcription</th>
 	<th>Locked</th>
-  </thead>
+  </thead> -->
 
   <tbody>
     <%= render @question.transcriptions %>

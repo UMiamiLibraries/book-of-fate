@@ -1,11 +1,6 @@
 class TagsController < AdminController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
-  # GET /tags
-  def index
-    @tags = Tag.all
-  end
-
   # GET /tags/1
   def show
   end
@@ -24,10 +19,12 @@ class TagsController < AdminController
     @tag = Tag.new(tag_params)
 
     if @tag.save
-      redirect_to @tag, notice: 'Tag was successfully created.'
+      redirect_to :back
     else
       render :new
     end
+    rescue ActionController::RedirectBackError
+      redirect_to root_path
   end
 
   # PATCH/PUT /tags/1
@@ -44,7 +41,9 @@ class TagsController < AdminController
   # DELETE /tags/1
   def destroy
     @tag.destroy
-    redirect_to tags_url, notice: 'Tag was successfully destroyed.'
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 
   private

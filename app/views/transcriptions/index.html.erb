@@ -2,7 +2,7 @@
 
 <h1 class="text-center">Transcriptions</h1>
 
-<div class="digg_pagination">
+<div class="digg_pagination text-center">
   <div class="page_info">
     <%= page_entries_info @posts %>
   </div>
@@ -13,6 +13,5 @@
     <%= render @transcriptions %>
   </tbody>
 </table>
-
-<%= will_paginate %>
+<div class="text-center"><%= will_paginate %></div>
 

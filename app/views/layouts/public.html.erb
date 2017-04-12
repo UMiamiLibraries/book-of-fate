@@ -20,35 +20,11 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container-fluid">
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span> 
-                  </button>
-                  <a class="navbar-brand" href="/">Book of Fate</a>
-              </div>
-              <div class="collapse navbar-collapse" id="myNavbar">
-                  <ul class="nav navbar-nav">
-                      <li><a href="#">Otto G. Richter Library | Department of Special Collections</a></li>
-                      <li></li>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><%= link_to 'About', about_path %></li>
-                    <li><%= link_to 'Contact', contact_path %></li>
-                </ul>
-              </div>
-          </div>
-      </nav>
+      <%= render 'layouts/navigation_public' %>
       <br><br>
     </header>
     <div class="container-fluid">
       <%= yield %>
     </div>
-    <footer class="footer">
-        <small>The Book of Fate Application by CSC 431 Group 5</small>
-    </footer>
   </body>
 </html>

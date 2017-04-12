@@ -1,0 +1,6 @@
+<p>
+  <%= f.collection_select :page_id, Page.order(:title), :id, :title, include_blank: true %>
+  <% if f.object.id != nil then %>
+  	<%= link_to 'Remove', tag_path(f.object.id),  method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</p>

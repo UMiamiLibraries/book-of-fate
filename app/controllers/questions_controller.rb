@@ -10,4 +10,12 @@ class QuestionsController < AdminController
     @question = Question.find(params[:id])
   end
 
+  def lock
+  	@question = Question.find(params[:id])
+  	@question.toggle
+    @question.save
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
+  end
 end

@@ -9,7 +9,10 @@ class SubmissionsController < AdminController
   # DELETE /submissions/1
   def destroy
     @submission.destroy
-    redirect_to submissions_url, notice: 'Submission was successfully destroyed.'
+    flash[:notice] = 'Submission was successfully destroyed.'
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
   
   # GET /submissions/1/select
@@ -17,10 +20,11 @@ class SubmissionsController < AdminController
     transcription = @submission.transcription
     if transcription.update(transcription: @submission.submission)
       flash[:notice] = "Submission was successfully updated."
-      redirect_to transcription_path(transcription), notice: 'Submission was successfully updated.'
-    else
-      redirect_to transcription_path(transcription)
+      transcription.save
     end
+    redirect_to :back
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 
   private

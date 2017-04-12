@@ -1,14 +1,9 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center"><%= @page.title %></h1>
+<h3 class="text-center">(<%= @page.slug %>)</h3>
 
-<p>
-  <strong>Title:</strong>
-  <%= @page.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @page.description %>
-</p>
+<div class="text-center">
+  <%= simple_format(@page.description) %>
+</div>
 
 <%= link_to 'Edit', edit_page_path(@page) %> |
 <%= link_to 'Back', pages_path %>

@@ -1,4 +1,2 @@
-<h1>Static#pages</h1>
-<p>Find me in app/views/static/pages.html.erb</p>
-<div><%= @page.title %></div>
-<div><%= @page.discription %></div>
+<h1><%= @page.title %></h1>
+<div><%= simple_format(@page.description) %></div>

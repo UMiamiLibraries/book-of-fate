@@ -54,10 +54,9 @@
 <% end %>
 
 <% content_for :transcription do %>
-    <% if false %>
-        <p>Transcription: <%= @transcription.transcription %></p>
+    <% if ENV['BOF_MODE'] != 'CROWD_SOURCE' %>
+        <p><%= @transcription.transcription %></p>
     <% else %>
-        <p><%= @pattern.pattern %></p>
         <%= form_for @submission, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
             <div class="row">
                 <div class="col-xs-2 text-center"></div>

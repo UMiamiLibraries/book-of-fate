@@ -1,6 +1,7 @@
 class GeomancerController < ApplicationController
     layout "geomancer"
     before_action :set_questions
+    before_action :set_topics
 
     def index
     end
@@ -9,7 +10,6 @@ class GeomancerController < ApplicationController
     end
 
     def result
-        puts parseRolls
         @pattern = Pattern.find_by(pattern: parseRolls)
         @transcription = Transcription.find_by(question: @question, pattern: @pattern)
         @submission = Submission.new
@@ -21,9 +21,10 @@ class GeomancerController < ApplicationController
         @submission = Submission.new(submission_params)
         @submission.transcription = @transcription
         if @submission.save!
-            redirect_to root_path
+            flash[:notice] = "Thank you for your submission. It is under review"
+            redirect_to :back
         else
-            render :result
+            render result
         end
     end
 
@@ -36,6 +37,10 @@ class GeomancerController < ApplicationController
       def set_questions
         @questions = Question.all
         @question = Question.find_by(number: params[:question_id])
+      end
+
+      def set_topics
+        @topics = Page.all.order(:title)
       end
       
       def parseRolls
@@ -73,23 +78,4 @@ class GeomancerController < ApplicationController
     def submission_params
       params.require(:submission).permit(:submission)
     end
-
-
-
-
- # # GET /submissions/new
-  # def new
-    # @submission = Submission.new
-  # end
-#   
-  # # POST /submissions
-  # def create
-    # @submission = Submission.new(submission_params)
-# 
-    # if @submission.save
-      # redirect_to @submission, notice: 'Submission was successfully created.'
-    # else
-      # render :new
-    # end
-  # end
 end

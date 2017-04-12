@@ -28,19 +28,22 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li><%= link_to 'Questions', questions_path %></li>
-              <li><%= link_to 'Patterns', patterns_path %></li>
               <li><%= link_to 'Transcriptions', transcriptions_path %></li>
               <li><%= link_to 'Submissions', submissions_path %></li>
-              <li><%= link_to 'Tags', tags_path %></li>
               <li><%= link_to 'Pages', pages_path %></li>              
               <li><%= link_to 'Users', users_path %></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> test1</a></li>
-              <li>
-                  <%= link_to raw("<span class='glyphicon glyphicon-log-out'></span> Logout"), logout_path, method: "delete" %>
-                   
-              </li>
+              <% if logged_in? %>
+                <li><a><span class="glyphicon glyphicon-user"></span> <%= current_user.email %></a></li>
+                <li>
+                    <%= link_to raw("<span class='glyphicon glyphicon-log-out'></span> Logout"), logout_path, method: "delete" %> 
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to raw("<span class='glyphicon glyphicon-log-in'></span> Login"), login_path %>  
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
@@ -50,8 +53,5 @@
     <div class="container">
       <%= yield %> 
     </div>
-    <footer class="footer">
-      <small>The Book of Fate Application by CSC 431 Group 5</small>
-    </footer>
   </body>
 </html>

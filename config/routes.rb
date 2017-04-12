@@ -10,23 +10,29 @@ Rails.application.routes.draw do
   end
   
   scope '/about' do
-    get '/:slug', to: 'static#pages'
+    get '/:slug', to: 'static#pages', as: 'topic'
   end
 
   scope '/admin' do
     resources :pages
-    resources :patterns,        only: [:index, :show]
-    resources :questions,       only: [:index, :show]
+    resources :questions, only: [:index, :show] do  
+      member do
+        get 'lock'
+      end
+    end
     resources :resources
     resources :tags
-    resources :transcriptions,  only: [:edit, :index, :show, :update]
+    resources :transcriptions,  only: [:edit, :index, :show, :update] do
+      member do
+        get 'lock'
+      end
+    end
     resources :submissions do
       member do
         get 'select'
       end
     end
     resources :users
-
   end
 
   get 'about',      to: 'static#about'

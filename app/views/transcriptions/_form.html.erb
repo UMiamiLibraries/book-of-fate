@@ -11,27 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :question_id %>
-    <%= f.text_field :question_id %>
+  <div class="field" style="margin-bottom: 5px">
+    <%= f.text_area :transcription, size: "20x5", class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :pattern_id %>
-    <%= f.text_field :pattern_id %>
+  <br>
+
+  <div class="row">
+    <div class="col-md-9">
+    <table class="table table-striped">
+      <tbody>
+        <%= render @transcription.submissions%>
+      </tbody>
+    </table>
+    </div>
+    <div class="col-md-3">
+      <%= f.fields_for :tags do |builder| %>
+        <%= render "tag_fields", f: builder %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :transcription %>
-    <%= f.text_field :transcription %>
-  </div>
-
-  <div class="field">
-    <%= f.label :locked %>
-    <%= f.check_box :locked %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions text-center">
+    <%= f.submit  class: "btn btn-primary" %>
   </div>
 <% end %>
