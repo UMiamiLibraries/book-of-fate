@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
+  layout "public"
+
   def new
+    @topics = Page.all
   end
     
   def create

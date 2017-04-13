@@ -16,18 +16,22 @@ class Transcription < ApplicationRecord
   end
 
   def status
-    if self.locked then
+    if !self.question.submissions_allowed? then
+      return "Frozen"
+    elsif self.locked then
       return "Unfreeze"
     else
       return "Freeze"
     end
   end
 
+  def submissions_allowed?
+    return self.question.submissions_allowed? && !self.locked
+  end
+
   def toggle
-    if self.locked then
-      self.locked = false
-    else
-      self.locked = true
+    if self.question.submissions_allowed? then
+      self.locked = !self.locked
     end
   end
 end

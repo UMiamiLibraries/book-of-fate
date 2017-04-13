@@ -13,20 +13,23 @@
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control"%>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label :url %>
-    <%= f.text_field :slug %>
+    <%= f.text_field :slug, class: "form-control" %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, size: '30x12', class: "form-control" %>
   </div>
+  <br>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions text-center">
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
   </div>
 <% end %>

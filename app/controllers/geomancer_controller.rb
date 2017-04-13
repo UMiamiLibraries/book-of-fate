@@ -18,11 +18,15 @@ class GeomancerController < ApplicationController
     def create
         @pattern = Pattern.find_by(pattern: parseRolls)
         @transcription = Transcription.find_by(question: @question, pattern: @pattern)
-        @submission = Submission.new(submission_params)
-        @submission.transcription = @transcription
-        if @submission.save!
-            flash[:notice] = "Thank you for your submission. It is under review"
-            redirect_to :back
+        if @transcription.submissions_allowed? then
+          @submission = Submission.new(submission_params)
+          @submission.transcription = @transcription
+          if @submission.save!
+              flash[:notice] = "Thank you for your submission. It is under review"
+              redirect_to :back
+          else
+              render result
+          end
         else
             render result
         end

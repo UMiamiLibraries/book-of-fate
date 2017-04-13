@@ -2,15 +2,10 @@
 
 <h1 class="text-center">
   <%= @question.question %>
-  <%= link_to @question.status(), lock_question_path(@question.id), class: "btn btn-primary", style: "width:85px"  %>
+  <%= link_to @question.status, lock_question_path(@question.id), class: "btn btn-primary", style: "width:85px"  %>
 </h1>
 
 <table class="table table-striped">
-<!--   <thead>
-	<th>Image</th>
-	<th>Transcription</th>
-	<th>Locked</th>
-  </thead> -->
 
   <tbody>
     <%= render @question.transcriptions %>
