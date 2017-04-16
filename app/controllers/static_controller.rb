@@ -2,9 +2,6 @@ class StaticController < ApplicationController
   layout "public"
   before_action :set_topics
 
-  def contact
-  end
-
   def about
   end
 

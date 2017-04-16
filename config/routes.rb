@@ -35,9 +35,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  get 'about',      to: 'static#about'
-  get 'contact',    to: 'static#contact'
-
+  get    '/about',  to: 'static#about'
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

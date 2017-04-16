@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     geomancer = new Geomancer($('#results'), $('#times'));
     $("#roll").click(function(){
-        geomancer.roll();        
+        geomancer.roll();       
     });
     $('#skip').click(function() {
         geomancer.skip();
