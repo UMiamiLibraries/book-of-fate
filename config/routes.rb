@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'geomancer#index'
-  constraints(question_id: /[0-9]+/) do
+  constraints(question_id: /[1-9]|1[0-9]|2[0-5]/) do
     get '/:question_id/', to: 'geomancer#question'
     constraints(rolls: /[1-4]{16}/) do
       get '/:question_id/:rolls',   to: 'geomancer#result'
@@ -20,19 +20,18 @@ Rails.application.routes.draw do
         get 'lock'
       end
     end
-    resources :resources
-    resources :tags
+    resources :tags, only: [:create, :update, :destroy]
     resources :transcriptions,  only: [:edit, :index, :show, :update] do
       member do
         get 'lock'
       end
     end
-    resources :submissions do
+    resources :submissions, only: [:create, :index, :destroy] do
       member do
         get 'select'
       end
     end
-    resources :users
+    resources :users, only: [:new, :create, :index, :destroy, :edit, :update]
   end
 
   get    '/about',  to: 'static#about'

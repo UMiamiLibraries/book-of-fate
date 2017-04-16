@@ -37,16 +37,6 @@ ActiveRecord::Schema.define(version: 20170110173503) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "resources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "page_id"
-    t.string   "title"
-    t.string   "author"
-    t.string   "link"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["page_id"], name: "index_resources_on_page_id", using: :btree
-  end
-
   create_table "submissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "transcription_id"
     t.string   "submission"
