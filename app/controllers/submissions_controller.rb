@@ -10,9 +10,7 @@ class SubmissionsController < AdminController
   def destroy
     @submission.destroy
     flash[:notice] = 'Submission was successfully destroyed.'
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
   
   # GET /submissions/1/select
@@ -22,9 +20,7 @@ class SubmissionsController < AdminController
       flash[:notice] = "Submission was successfully updated."
       transcription.save
     end
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   private

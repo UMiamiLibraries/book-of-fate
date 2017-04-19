@@ -8,14 +8,13 @@ class QuestionsController < AdminController
   # GET /questions/1
   def show
     @question = Question.find(params[:id])
+    @transcriptions = @question.transcriptions.paginate(page: params[:page])
   end
 
   def lock
   	@question = Question.find(params[:id])
   	@question.toggle
     @question.save
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 end

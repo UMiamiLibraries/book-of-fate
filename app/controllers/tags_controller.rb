@@ -19,12 +19,10 @@ class TagsController < AdminController
     @tag = Tag.new(tag_params)
 
     if @tag.save
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       render :new
     end
-    rescue ActionController::RedirectBackError
-      redirect_to root_path
   end
 
   # PATCH/PUT /tags/1
@@ -41,9 +39,7 @@ class TagsController < AdminController
   # DELETE /tags/1
   def destroy
     @tag.destroy
-    redirect_to :back
-  rescue ActionController::RedirectBackError
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   private

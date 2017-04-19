@@ -5,11 +5,19 @@
   <%= link_to @question.status, lock_question_path(@question.id), class: "btn btn-primary", style: "width:85px"  %>
 </h1>
 
+<div class="digg_pagination text-center">
+  <div class="page_info">
+    <%= page_entries_info @transcriptions %>
+  </div>
+  <%= will_paginate @transcriptions, :container => false %>
+</div>
+
 <table class="table table-striped">
 
   <tbody>
-    <%= render @question.transcriptions %>
+    <%= render @transcriptions %>
   </tbody>
 </table>
+<div class="text-center"><%= will_paginate @transcriptions %></div>
 
 <%= link_to 'Back', questions_path %>
